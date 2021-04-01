@@ -5,7 +5,11 @@
 		<div class="text-center">
 			<h1 class="text-5xl uppercase bold">Phones</h1>
 		</div>
-	
+	    <div class="pt-10">
+	    	<a href="phones/create" class="border-b-2 pb-2 border-dotted italic text-gray-500">
+	    		 Add a new Phone &rarr;
+	    	</a>
+	    </div>
 		<div class="w-5/6 py-10">
 			@foreach($phones as $phone)
 			<div class="m-auto">
