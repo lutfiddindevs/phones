@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Phone;
 
 class PhonesController extends Controller
 {
@@ -13,7 +14,8 @@ class PhonesController extends Controller
      */
     public function index()
     {
-        return view('phones.index');
+        $phones = Phone::all();
+        return view('phones.index', ['phones' => $phones]);
     }
 
     /**
@@ -23,7 +25,7 @@ class PhonesController extends Controller
      */
     public function create()
     {
-        //
+        return view('phones.create');
     }
 
     /**
@@ -34,7 +36,13 @@ class PhonesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $phone = Phone::create([
+            'name' => $request->name,
+            'founded' => $request->founded,
+            'description' => $request->description
+        ]);
+
+        return redirect('/phones');
     }
 
     /**
