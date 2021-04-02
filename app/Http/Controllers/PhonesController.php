@@ -64,7 +64,9 @@ class PhonesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $phone = Phone::find($id)->first();
+
+        return view('phones.edit')->with('phone', $phone);
     }
 
     /**
@@ -76,7 +78,14 @@ class PhonesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $phone = Phone::where('id', $id)
+        ->update([
+            'name' => $request->name,
+            'founded' => $request->founded,
+            'description' => $request->description
+        ]);
+
+        return redirect('/phones');
     }
 
     /**
