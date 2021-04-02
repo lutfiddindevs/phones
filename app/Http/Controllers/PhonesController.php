@@ -41,7 +41,7 @@ class PhonesController extends Controller
             'founded' => $request->founded,
             'description' => $request->description
         ]);
-
+        session()->flash('c_message', 'Phone has been created successfully');
         return redirect('/phones');
     }
 
@@ -84,7 +84,7 @@ class PhonesController extends Controller
             'founded' => $request->founded,
             'description' => $request->description
         ]);
-
+        session()->flash('e_message', 'Phone has been updated successfully');
         return redirect('/phones');
     }
 
@@ -94,8 +94,10 @@ class PhonesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Phone $phone)
     {
-        //
+        $phone->delete();
+        session()->flash('d_message', 'Phone has been deleted successfully');
+        return redirect('/phones');
     }
 }
