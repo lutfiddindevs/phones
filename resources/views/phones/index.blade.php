@@ -13,6 +13,9 @@
 		<div class="w-5/6 py-10">
 			@foreach($phones as $phone)
 			<div class="m-auto">
+				<div class="float-right">
+					<a href="{{ $phone->id }}/edit" class="border-b-2 pb-2 border-dotted italic text-green-500">Edit &rarr; </a>
+				</div>
 				<span class="uppercase text-blue-500 font-bold text-xs italic">
 					Founded: {{ $phone->founded }} 
 				</span>
