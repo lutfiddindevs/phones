@@ -12,4 +12,8 @@ class Phone extends Model
     protected $primaryKey = 'id';
     
     protected $fillable = ['name', 'founded', 'description'];
+
+    public function phoneModels() {
+    	return $this->hasMany(PhoneModel::class);
+    }
 }
