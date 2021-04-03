@@ -53,7 +53,9 @@ class PhonesController extends Controller
      */
     public function show($id)
     {
-        //
+        $phone = Phone::find($id);
+
+        return view('phones.show')->with('phone', $phone);
     }
 
     /**
