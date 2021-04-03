@@ -20,6 +20,14 @@ class CreatePhonesTable extends Migration
             $table->longText('description');
             $table->timestamps();
         });
+
+        Schema::create('phone_models', function (Blueprint $table) {
+             $table->increments('id');
+             $table->unsignedInteger('phone_id');
+             $table->string('model_nama');
+             $table->timestamps();
+             $table->foreign('phone_id')->references('id')->on('phones')->onDelete('cascade');
+        });
     }
 
     /**
