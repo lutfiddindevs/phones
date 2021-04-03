@@ -41,8 +41,8 @@
 				<span class="uppercase text-blue-500 font-bold text-xs italic">
 					Founded: {{ $phone->founded }} 
 				</span>
-				<h2 class="text-gray-700 text-5xl">
-					{{ $phone->name }}
+				<h2 class="text-gray-700 text-5xl hover:text-gray-500">
+					<a href="/phones/{{ $phone->id }}">{{ $phone->name }}</a>
 				</h2>
 				<p class="text-lg text-gray-700 py-6">
 					{{ $phone->description }}
