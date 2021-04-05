@@ -12,6 +12,11 @@ class PhonesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct() {
+        $this->middleware('auth', ['except' => ['index', 'show']]);
+    }
+
     public function index()
     {
         $phones = Phone::all();
@@ -39,7 +44,8 @@ class PhonesController extends Controller
         $phone = Phone::create([
             'name' => $request->name,
             'founded' => $request->founded,
-            'description' => $request->description
+            'description' => $request->description,
+            'user_id' => auth()->user()->id
         ]);
         session()->flash('c_message', 'Phone has been created successfully');
         return redirect('/phones');
@@ -54,7 +60,7 @@ class PhonesController extends Controller
     public function show($id)
     {
         $phone = Phone::find($id);
-
+        
         return view('phones.show')->with('phone', $phone);
     }
 
